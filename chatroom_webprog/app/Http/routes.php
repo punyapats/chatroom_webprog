@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('chat.index');
+    return view('home');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
