@@ -16,15 +16,45 @@
                 </div>
             </div>
         </div>
+
         <div class="col-md-4 col-md"> 
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
+                <div class="panel-heading">Friend List</div>
                     <div class="panel-body">
-                        You are logged in!
+                        <button type="button" class="col-md-offset-2 btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Add Friend</button>
+                        <div class="lfriend">
+
+                        </div>
                     </div>
             </div>
         </div>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Friend</h4>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="usr">Username:</label>
+                  <input type="text" class="form-control" id="usr">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="add">Add</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
     </div>
 </div>
 @endsection
