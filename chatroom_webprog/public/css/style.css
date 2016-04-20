@@ -1,0 +1,16 @@
+.panel{
+	height: 90%
+}
+
+
+.chatbox{
+	height: 90%;
+	margin: 0px; padding: 0px
+	
+}
+.row,.col-md{
+	height: 100%
+}
+
+
+html,body { height: 100%; margin: 0px; padding: 0px; }
