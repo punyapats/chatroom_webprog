@@ -12,13 +12,18 @@
 */
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Route::get('/', function () {
+    return view('home');
     return view('auth.login');
 });
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+=======
+Route::get('/', 'ChatController@index');
+>>>>>>> 2eb9d6c0da0ee46603b9bcf188224c44afa40861
 =======
 Route::get('/', 'ChatController@index');
 >>>>>>> 2eb9d6c0da0ee46603b9bcf188224c44afa40861

@@ -1,0 +1,9 @@
+diff a/chatroom_webprog/app/Http/routes.php b/chatroom_webprog/app/Http/routes.php	(rejected hunks)
+@@ -12,7 +12,6 @@
+ */
+ 
+ Route::get('/', function () {
+-    return view('home');
+     return view('auth.login');
+ });
+ 
