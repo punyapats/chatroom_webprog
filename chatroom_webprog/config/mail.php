@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'webchat@webprog.com', 'name' => 'Web Prog Support'],
 
     /*
     |--------------------------------------------------------------------------
