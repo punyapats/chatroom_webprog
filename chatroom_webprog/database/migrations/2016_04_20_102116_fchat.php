@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAccountsTable extends Migration
+class Fchat extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,7 @@ class CreateAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('accounts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
+        //
     }
 
     /**
@@ -25,6 +22,6 @@ class CreateAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('accounts');
+        //
     }
 }
