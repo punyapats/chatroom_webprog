@@ -1,5 +1,6 @@
 .panel{
-	height: 90%
+	height: 90%;
+	margin: 0px; padding: 0px
 }
 
 
@@ -9,8 +10,29 @@
 	
 }
 .row,.col-md{
-	height: 100%
+	height: 100%;
 }
+
+.chat{
+	height: 80%;
+	width: 100%
+}
+
+.chatbody{
+	height: 100%;
+	width: 100%
+}
+
+input[name="message"]{
+	height: 15%;
+	width: 80%
+}
+.btn.btn-large.btn-primary.send{
+	height: 15%;
+	width: 18%;
+	font-size: 24px
+}
+
 
 
 html,body { height: 100%; margin: 0px; padding: 0px; }
