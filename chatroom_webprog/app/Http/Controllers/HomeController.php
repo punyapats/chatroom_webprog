@@ -38,7 +38,8 @@ class HomeController extends Controller
         // $chat=[$chat];
         $fchatkey='';
 
-        return view('home',compact('friendlist','fname','chat','fchatkey'));
+        $grouplist = DB::table('glist')->where('user',$id)->get();
+        return view('home',compact('friendlist','fname','chat','fchatkey','grouplist'));
         // return $fname;
 
     }
@@ -97,18 +98,22 @@ class HomeController extends Controller
         $userid = Auth::user()->id;
         $checklist = Input::get('checklist');
         $checklist = $checklist['checklist'];
-        $gchatkey = '';
-        DB::table('glist')->insert(
-                array('groupname' => $gname, 'user' => $userid)
-            );
+        $gchatkey = $userid.'a';
+        
         $checklistlength = count($checklist);
         for($i=0;$i<$checklistlength;$i++){
             $gchatkey = $gchatkey.$checklist[$i].'a';
+        }
+        DB::table('glist')->insert(
+                array('groupname' => $gname, 'user' => $userid,'gchatkey'=>$gchatkey)
+        );
+        for($i=0;$i<$checklistlength;$i++){
             DB::table('glist')->insert(
-                array('groupname' => $gname, 'user' => $checklist[$i])
+                array('groupname' => $gname, 'user' => $checklist[$i],'gchatkey'=>$gchatkey)
             );
 
         }
+
         // return $checklist;
     }
 

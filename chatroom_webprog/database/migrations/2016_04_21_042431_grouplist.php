@@ -14,6 +14,7 @@ class Grouplist extends Migration
     {
         Schema::create('glist', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('gchatkey');
             $table->string('groupname');
             $table->string('user');
         });
