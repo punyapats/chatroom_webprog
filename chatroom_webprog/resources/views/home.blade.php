@@ -30,7 +30,7 @@
                     @endif
                     </div>
 
-                    {{ Form::open(array('url' => route('send', ['fchatkey' => $fchatkey]), 'method' => 'post')) }}
+                    {{ Form::open(array('url' => route('send', ['fchatkey' => $fchatkey]), 'method' => 'post', 'class'=>'chatform')) }}
                       {{ Form::text('message', null,['id'=>'textin']) }}
                       {{ Form::submit('Send', ['class' => 'btn btn-large btn-primary send' , 'id' => 'sendbut']) }}
                     {{ Form::close() }}    
@@ -94,5 +94,6 @@
 
 
     </div>
+    <input type="hidden" value="{{ $fchatkey }}" id="fkey">
 </div>
 @endsection

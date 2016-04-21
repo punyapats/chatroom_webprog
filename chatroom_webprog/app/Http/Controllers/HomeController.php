@@ -54,7 +54,7 @@ class HomeController extends Controller
         }
     
         if($userid<$fid){
-            $temp = $userid.'@'.$fid;
+            $temp = $userid.'a'.$fid;
             DB::table('flist')->insert(
                 array('user' => $userid, 'friend' => $fid, 'fchatkey' => $temp)
             );
@@ -62,7 +62,7 @@ class HomeController extends Controller
                 array('user' => $fid, 'friend' => $userid, 'fchatkey' => $temp)
             );                
         }else {
-            $temp = $fid.'@'.$userid;
+            $temp = $fid.'a'.$userid;
             DB::table('flist')->insert(
                 array('user' => $fid, 'friend' => $userid, 'fchatkey' => $temp)
                 );
@@ -124,5 +124,14 @@ class HomeController extends Controller
 
         // return view('home',compact('chat','fchatkey'));
         return back();
+    }
+
+
+     public function updatechat()
+    {
+        $fchatkey = Input::get('fchatkey');
+        $chat = DB::table('fchat')->where('fchatkey',$fchatkey)->get();
+
+        return $chat;
     }
 }
