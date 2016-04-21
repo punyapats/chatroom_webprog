@@ -30,6 +30,8 @@
                     @endif
                     </div>
 
+                    <br>
+
                     @yield('button')
                     
                 </div>
