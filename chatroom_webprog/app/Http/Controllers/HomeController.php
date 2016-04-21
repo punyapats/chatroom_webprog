@@ -85,9 +85,9 @@ class HomeController extends Controller
 
         $fchat = DB::table('flist')->where('user',$id)->where('fchatkey',$fchatkey)->select('friend')->get();
 
-        $fname = DB::table('users')->where('id',$fchat[0]->friend)->get();
+        //$fname = DB::table('users')->where('id',$fchat[0]->friend)->get();
 
-        return view('home',compact('friendlist','chat','fname'));
+        return view('home',compact('friendlist','chat','fname','fchatkey'));
         // return view('home',compact('friendlist'),compact('chat'),compact('fname'));
         // return $chat;
     }
@@ -116,15 +116,14 @@ class HomeController extends Controller
     //}
 
 
-    public function send()
+    public function send($fchatkey)
     {
-        $fchatkey='3@5';
         DB::table('fchat')->insert(
             ['text'=> Input::get('message'),'fchatkey'=> $fchatkey]
         );  
 
         $chat = DB::table('fchat')->where('fchatkey', $fchatkey)->get();
 
-        return view('home',compact('chat'));
+        return view('home',compact('chat','fchatkey'));
     }
 }

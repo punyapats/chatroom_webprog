@@ -24,13 +24,13 @@
 
                     @if(is_array($chat) || is_object($chat))
                       @foreach($chat as $cchat)
-                        <p>{{ $cchat->date }}-{{ $cchat->text }}</p>
+                        <p>{{ $cchat->date }}   -   {{ $cchat->text }}</p>
                       @endforeach
                     @endif
                           
                     </div>
 
-                    {{ Form::open(array('url' => '/send', 'method' => 'post')) }}
+                    {{ Form::open(array('url' => route('send', ['fchatkey' => $fchatkey]), 'method' => 'post')) }}
                       {{ Form::text('message', null,['id'=>'textin']) }}
                       {{ Form::submit('Send', ['class' => 'btn btn-large btn-primary send' , 'id' => 'sendbut']) }}
                     {{ Form::close() }}    
