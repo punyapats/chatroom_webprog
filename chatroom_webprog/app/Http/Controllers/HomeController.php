@@ -55,7 +55,7 @@ class HomeController extends Controller
         }
     
         if($userid<$fid){
-            $temp = $userid.'@'.$fid;
+            $temp = $userid.'a'.$fid;
             DB::table('flist')->insert(
                 array('user' => $userid, 'friend' => $fid, 'fchatkey' => $temp)
             );
@@ -63,7 +63,7 @@ class HomeController extends Controller
                 array('user' => $fid, 'friend' => $userid, 'fchatkey' => $temp)
             );                
         }else {
-            $temp = $fid.'@'.$userid;
+            $temp = $fid.'a'.$userid;
             DB::table('flist')->insert(
                 array('user' => $fid, 'friend' => $userid, 'fchatkey' => $temp)
                 );
@@ -91,6 +91,21 @@ class HomeController extends Controller
         return view('home',compact('friendlist','chat','fname','fchatkey'));
         // return view('home',compact('friendlist'),compact('chat'),compact('fname'));
         // return $chat;
+    }
+
+    public function getgchat($gchatkey)
+    {
+        $chat = DB::table('gchat')->where('gchatkey',$gchatkey)->get();
+
+        $id = Auth::user()->id;
+
+        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey','flist.friend')->get();
+
+        $gname = DB::table('gchat')->where('gchatkey',$gchatkey)->select('groupname')->first();
+
+
+        return view('ghome',compact('friendlist','chat','gchatkey','gname'));
+        
     }
 
     public function creategroup(){
@@ -127,5 +142,28 @@ class HomeController extends Controller
 
         // return view('home',compact('chat','fchatkey'));
         return back();
+    }
+
+<<<<<<< HEAD
+
+     public function updatechat()
+    {
+        $fchatkey = Input::get('fchatkey');
+        $chat = DB::table('fchat')->where('fchatkey',$fchatkey)->get();
+
+        return $chat;
+=======
+    public function gsend($gchatkey){
+
+        DB::table('gchat')->insert(
+            ['text'=> Input::get('message'),'gchatkey'=> $gchatkey]
+        );  
+
+        $chat = DB::table('gchat')->where('gchatkey', $gchatkey)->get();
+
+        // return view('home',compact('chat','fchatkey'));
+        return back();
+
+>>>>>>> origin/master
     }
 }

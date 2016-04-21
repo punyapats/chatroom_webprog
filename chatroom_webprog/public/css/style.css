@@ -16,8 +16,9 @@
 .chat{
 	height: 80%;
 	width: 100%;
-	overflow: scroll;
+	overflow-y:scroll;
 }
+
 
 .chatbody{
 	height: 100%;
@@ -26,18 +27,29 @@
 
 input[name="message"]{
 	height: 100%;
-	width: 80%
+	width: 90%;
+	float:left;
 }
 .btn.btn-large.btn-primary.send{
 	height: 100%;
 	width: 18%;
 	font-size: 24px
 }
+.send{
+	float: right;
+	margin-top: -4px;
+}
 
 .chatform{
 	height: 15%;
 	width: 100%;
 }
+
+.addbut{
+	float: right;
+}
+
+
 
 a:link {color: black;}      /* unvisited link */
 a:visited {color: black;}   /* visited link */

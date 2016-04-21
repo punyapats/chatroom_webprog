@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @extends('layouts.app')
 
 @section('content')
@@ -11,13 +10,7 @@
             <div class="panel panel-default">
 
                 <div class="panel-heading">ChatBox - 
-                    @if(isset($fname))
-                    @if(is_array($fname) || is_object($fname))
-                      @foreach($fname as $names)
-                        {{ $names->name }}
-                      @endforeach
-                    @endif
-                    @endif
+                    @yield('name')
 
                 </div>
                 <div class="panel-body chatbody">
@@ -31,10 +24,9 @@
                     @endif
                     </div>
 
-                    {{ Form::open(array('url' => route('send', ['fchatkey' => $fchatkey]), 'method' => 'post')) }}
-                      {{ Form::text('message', null,['id'=>'textin']) }}
-                      {{ Form::submit('Send', ['class' => 'btn btn-large btn-primary send' , 'id' => 'sendbut']) }}
-                    {{ Form::close() }}    
+                    <br>
+
+                    @yield('button')
                     
                 </div>
                 
@@ -43,10 +35,9 @@
 
         <div class="col-md-4 col-md"> 
             <div class="panel panel-default">
-                <div class="panel-heading">Chat List</div>
+                <div class="panel-heading">Friend List</div>
                     <div class="panel-body">
-                       <span>Friend List</span>
-                       <button type="button" class="col-md-offset-8 btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Add Friend</button>
+                       <button type="button" class="col-md-offset-8 btn btn-default btn-md addbut" data-toggle="modal" data-target="#myModal">Add Friend</button>
                         <div class="lfriend" id="friend">
                           <ul>
                             @if(isset($friendlist))
@@ -57,17 +48,7 @@
                             @endif
                           </ul>  
                         </div>
-                        
-                        <span>Group List</span>
-                        <button type="button" class="col-md-offset-8 btn btn-info btn-md" data-toggle="modal" data-target="#createModal">Create Group</button>
-                        <ul>
-                            @if(isset($grouplist))
-                              @foreach ($grouplist as $group)
-                                <li><a href="/gchat/{{ $group->gchatkey }}">{{ $group->groupname }}</a></li>
-                              
-                              @endforeach
-                            @endif
-                          </ul> 
+                        <button type="button" class="col-md-offset-8 btn btn-default btn-md addbut" data-toggle="modal" data-target="#createModal">Create Group</button>
                     </div>
             </div>
         </div>
@@ -137,24 +118,8 @@
 
           </div>
         </div>
-=======
-@extends('layouts.bothhome')
 
-@section('name')
-  @if(isset($fname))
-  @if(is_array($fname) || is_object($fname))
-    @foreach($fname as $names)
-      {{ $names->name }}
-    @endforeach
-  @endif
-  @endif
-@endsection
->>>>>>> 28d25c10dd75f610d947da469e65c5c89de502a8
 
-@section('button')
-  {{ Form::open(array('url' => route('send', ['fchatkey' => $fchatkey]), 'method' => 'post', 'class'=>'chatform')) }}
-    {{ Form::text('message', null,['id'=>'textin']) }}
-    {{ Form::submit('Send', ['class' => 'btn btn-default send' , 'id' => 'sendbut']) }}
-  {{ Form::close() }}
-
+    </div>
+</div>
 @endsection

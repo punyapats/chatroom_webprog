@@ -43,3 +43,13 @@ Route::get('/chat/add','HomeController@addfriend');
 Route::get('/chat/creategroup','HomeController@creategroup');
 
 Route::get('/chat/{fchatkey}', 'HomeController@getchat');
+
+
+Route::get('/chat/{fchatkey}/update', 'HomeController@updatechat');
+
+Route::get('/update', 'HomeController@updatechat');
+
+
+Route::get('/gchat/{gchatkey}', 'HomeController@getgchat');
+Route::post('/gchat/{gchatkey}/send', ['as' => 'gsend', 'uses' => 'HomeController@gsend']); 
+

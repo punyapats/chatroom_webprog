@@ -15,8 +15,28 @@ $(document).ready(function()
             }
             ,datatype : 'json'
         });
+    });
 
-    })
+    // var key = '{{ $fchatkey }}';
+    var key = $('#fkey').val();
+    setInterval(function(){
+        $.ajax({
+            type: "GET",
+            url: "/update",
+            data: {
+                fchatkey : key
+            },
+            success:function(res)
+            {
+                // alert(res[0]['text']);
+                $("div.chat").empty();
+                $.each(res,function(index,value){
+                    $("div.chat").append('<p>'+value['date']+" - "+value['text']+'</p>');
+                });
+            }
+        });
+    },5000);
+
 
     $("#createg").click(function(){
         var gname = $('#gname').val();
@@ -39,5 +59,5 @@ $(document).ready(function()
             ,datatype : 'json'
         });
 
-    })
+    });
 });
