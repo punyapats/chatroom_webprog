@@ -7,9 +7,19 @@
             <div class="panel panel-default">
                 <div class="panel-heading">ChatBox - {{ $fname->friend }}</div>
 
+                <div class="panel-heading">ChatBox - 
+                    @if($fname)
+                        {{ $fname->friend }}
+                    @endif
+                </div>
                 <div class="panel-body chatbody">
                     <div class="chat">
-                        <li>{{ $chat->date }}-{{ $chat->text }}</li>
+                        @if($chat)
+                          @foreach($chat as $tchat)
+                            <li>{{ $tchat->date }}-{{ $tchat->text }}</li>
+                          @endforeach
+                        @endif
+                          
                     </div>
 
                     <form action="/send" method="post" class="chatform">
