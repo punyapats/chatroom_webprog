@@ -10,13 +10,7 @@
             <div class="panel panel-default">
 
                 <div class="panel-heading">ChatBox - 
-                    @if(isset($fname))
-                    @if(is_array($fname) || is_object($fname))
-                      @foreach($fname as $names)
-                        {{ $names->name }}
-                      @endforeach
-                    @endif
-                    @endif
+                    @yield('name')
 
                 </div>
                 <div class="panel-body chatbody">
