@@ -25,3 +25,6 @@ Route::get('register',function(){
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+// Add Friend
+Route::post('/addfriend','HomeController@addfriend');

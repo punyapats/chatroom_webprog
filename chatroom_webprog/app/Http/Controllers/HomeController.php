@@ -27,8 +27,8 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function getfriendlist(){
-        $friendlist = DB::select('SELECT med_id, med_name  FROM medicine');
+    public function addfriend(){
+        $friend = DB::select('SELECT email, id  FROM user');
         $meds = array();
 
         foreach($medicines as $medicine ) {
