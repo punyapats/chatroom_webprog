@@ -92,6 +92,21 @@ class HomeController extends Controller
         // return $chat;
     }
 
+    public function getgchat($gchatkey)
+    {
+        $chat = DB::table('gchat')->where('gchatkey',$gchatkey)->get();
+
+        $id = Auth::user()->id;
+
+        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey','flist.friend')->get();
+
+        $gname = DB::table('gchat')->where('gchatkey',$gchatkey)->select('groupname')->first();
+
+
+        return view('ghome',compact('friendlist','chat','gchatkey','gname'));
+        
+    }
+
     public function creategroup(){
 
         
@@ -108,5 +123,18 @@ class HomeController extends Controller
 
         // return view('home',compact('chat','fchatkey'));
         return back();
+    }
+
+    public function gsend($gchatkey){
+
+        DB::table('gchat')->insert(
+            ['text'=> Input::get('message'),'gchatkey'=> $gchatkey]
+        );  
+
+        $chat = DB::table('gchat')->where('gchatkey', $gchatkey)->get();
+
+        // return view('home',compact('chat','fchatkey'));
+        return back();
+
     }
 }
