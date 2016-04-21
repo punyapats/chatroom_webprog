@@ -15,7 +15,8 @@
 
 .chat{
 	height: 80%;
-	width: 100%
+	width: 100%;
+	overflow: scroll;
 }
 
 .chatbody{
@@ -38,6 +39,9 @@ input[name="message"]{
 	width: 100%;
 }
 
-
+a:link {color: black;}      /* unvisited link */
+a:visited {color: black;}   /* visited link */
+a:hover {color: black;}     /* mouse over link */
+a:active {color: black;}    /* selected link */
 
 html,body { height: 100%; margin: 0px; padding: 0px; }
