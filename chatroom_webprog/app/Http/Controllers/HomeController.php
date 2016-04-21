@@ -127,6 +127,7 @@ class HomeController extends Controller
 
         $chat = DB::table('fchat')->where('fchatkey', $fchatkey)->get();
 
-        return view('home',compact('chat','fchatkey'));
+        // return view('home',compact('chat','fchatkey'));
+        return back();
     }
 }
