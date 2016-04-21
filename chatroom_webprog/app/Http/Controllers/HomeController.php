@@ -24,15 +24,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
-
-    public function getfriendlist($id){
-        // $friendlist = DB::select('SELECT * FROM flist WHERE user='.$id);
+        $id = Auth::user()->id;
         $friendlist = DB::table('flist')->where('user'=$id)
-
-        return  response()->compact($friendlist);
+        return view('home',compact('friendlist'));
     }
+
+    // public function getfriendlist($id){
+    //     // $friendlist = DB::select('SELECT * FROM flist WHERE user='.$id);
+    //     $friendlist = DB::table('flist')->where('user'=$id)
+
+    //     return  response()->compact($friendlist);
+    // }
 
 
     public function send()
