@@ -26,7 +26,7 @@
 }
 
 input[name="message"]{
-	margin-top: -3px;
+	margin-top: 12px;
 	height: 40px;
 	width: 80%;
 	float:left;
@@ -37,7 +37,7 @@ input[name="message"]{
 }
 .send{
 	float: right;
-	margin-top: -4px;
+	margin-top: 11px;
 }
 
 .chatform{
