@@ -27,13 +27,10 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-<<<<<<< HEAD
 // Add Friend
 Route::post('/addfriend','HomeController@addfriend');
-=======
 Route::get('/', 'HomeController@index');
 
 Route::post('/add', 'HomeController@add');
 
 Route::post('/send', 'HomeController@send');
->>>>>>> bd8e049b214d4e810ff0ff31635ce91bf6f1c17e

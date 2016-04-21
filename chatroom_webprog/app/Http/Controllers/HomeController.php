@@ -39,11 +39,12 @@ class HomeController extends Controller
         }
 
         return  response()->json(['medicine_list' => $meds ]);
+    }
     public function getfriendlist($id){
         // $friendlist = DB::select('SELECT * FROM flist WHERE user='.$id);
-        $friendlist = DB::table('flist')->where('user'=$id)
+        // $friendlist = DB::table('flist')->where('user'= $id);
 
-        return  response()->compact($friendlist);
+        // return  response()->compact($friendlist);
     }
 
 
