@@ -21,13 +21,21 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Friend List</div>
                     <div class="panel-body">
-                        <button type="button" class="col-md-offset-2 btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Add Friend</button>
-                        <div class="lfriend">
+                        <button type="button" class="col-md-offset-8 btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Add Friend</button>
+                        <ul>
+                          <li>f1</li>
+                          <li>f2</li>
 
-                        </div>
+                          {{--@foreach ($flist as $friend)
+                              <li>{{ $friend }}</li>
+                          @endforeach--}}
+                        <li>
                     </div>
             </div>
         </div>
+
+
+
 
         <!-- Modal -->
         <div id="myModal" class="modal fade" role="dialog">
