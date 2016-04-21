@@ -30,7 +30,7 @@ class HomeController extends Controller
     {
         $id = Auth::user()->id;
         // $friendlist = DB::table('flist')->where('user',$id)->get();
-        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey')->get();
+        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey','flist.friend')->get();
 
         $fname='';
         // $fname=[$fname];
@@ -79,40 +79,53 @@ class HomeController extends Controller
 
         $id = Auth::user()->id;
         // $friendlist = DB::table('flist')->where('user',$id)->get();
-        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey')->get();
+        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey','flist.friend')->get();
 
         $fchat = DB::table('flist')->where('user',$id)->where('fchatkey',$fchatkey)->select('friend')->get();
+        if($fchat!==[]){
+            $fname = DB::table('users')->where('id',$fchat[0]->friend)->get();
+        }
 
-        $fname = DB::table('users')->where('id',$fchat[0]->friend)->get();
 
         return view('home',compact('friendlist','chat','fname','fchatkey'));
         // return view('home',compact('friendlist'),compact('chat'),compact('fname'));
         // return $chat;
     }
 
+    public function getgchat($gchatkey)
+    {
+        $chat = DB::table('gchat')->where('gchatkey',$gchatkey)->get();
+
+        $id = Auth::user()->id;
+
+        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey','flist.friend')->get();
+
+        $gname = DB::table('gchat')->where('gchatkey',$gchatkey)->select('groupname')->first();
 
 
-    // public function addfriend(){
-    //     $friend = DB::select('SELECT email, id  FROM user');
-    //     $meds = array();
+        return view('ghome',compact('friendlist','chat','gchatkey','gname'));
+        
+    }
 
-    //     foreach($medicines as $medicine ) {
-    //         $med_info = [
-    //             'med_id' => $medicine->med_id,
-    //             'med_name' => $medicine->med_name];
-    //         array_push($meds, $med_info);
-    //     }
+    public function creategroup(){
+        $gname = Input::get('gname');
+        $userid = Auth::user()->id;
+        $checklist = Input::get('checklist');
+        $checklist = $checklist['checklist'];
+        $gchatkey = '';
+        DB::table('glist')->insert(
+                array('groupname' => $gname, 'user' => $userid)
+            );
+        $checklistlength = count($checklist);
+        for($i=0;$i<$checklistlength;$i++){
+            $gchatkey = $gchatkey.$checklist[$i].'a';
+            DB::table('glist')->insert(
+                array('groupname' => $gname, 'user' => $checklist[$i])
+            );
 
-    //     return  response()->json(['medicine_list' => $meds ]);
-    // }
-    // public function getfriendlist($id){
-        // $friendlist = DB::select('SELECT * FROM flist WHERE user='.$id);
-        // $friendlist = DB::table('flist')->where('user'= $id);
-
-        // return  response()->compact($friendlist);
-
-    //}
-
+        }
+        // return $checklist;
+    }
 
     public function send($fchatkey)
     {
@@ -126,6 +139,7 @@ class HomeController extends Controller
         return back();
     }
 
+<<<<<<< HEAD
 
      public function updatechat()
     {
@@ -133,5 +147,18 @@ class HomeController extends Controller
         $chat = DB::table('fchat')->where('fchatkey',$fchatkey)->get();
 
         return $chat;
+=======
+    public function gsend($gchatkey){
+
+        DB::table('gchat')->insert(
+            ['text'=> Input::get('message'),'gchatkey'=> $gchatkey]
+        );  
+
+        $chat = DB::table('gchat')->where('gchatkey', $gchatkey)->get();
+
+        // return view('home',compact('chat','fchatkey'));
+        return back();
+
+>>>>>>> origin/master
     }
 }

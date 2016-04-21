@@ -1,99 +1,10 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container chatbox">
-    <div class="row">
-        <div class="col-md-8 col-md">    
-            
-
-                    
-            <div class="panel panel-default">
-
-                <div class="panel-heading">ChatBox - 
-                    @if(isset($fname))
-                    @if(is_array($fname) || is_object($fname))
-                      @foreach($fname as $names)
-                        {{ $names->name }}
-                      @endforeach
-                    @endif
-                    @endif
-
-                </div>
-                <div class="panel-body chatbody">
-                    <div class="chat">
-                    @if(isset($chat))
-                    @if(is_array($chat) || is_object($chat))
-                      @foreach($chat as $cchat)
-                        <p>{{ $cchat->date }} - {{ $cchat->text }}</p>
-                      @endforeach
-                    @endif
-                    @endif
-                    </div>
-
-                    {{ Form::open(array('url' => route('send', ['fchatkey' => $fchatkey]), 'method' => 'post', 'class'=>'chatform')) }}
-                      {{ Form::text('message', null,['id'=>'textin']) }}
-                      {{ Form::submit('Send', ['class' => 'btn btn-large btn-primary send' , 'id' => 'sendbut']) }}
-                    {{ Form::close() }}    
-                    
-                </div>
-                
-            </div>
-        </div>
-
-        <div class="col-md-4 col-md"> 
-            <div class="panel panel-default">
-                <div class="panel-heading">Friend List</div>
-                    <div class="panel-body">
-                       <button type="button" class="col-md-offset-8 btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Add Friend</button>
-                        <div class="lfriend">
-                            @if(isset($friendlist))
-                              @foreach ($friendlist as $friend)
-                                <a href="/chat/{{ $friend->fchatkey }}">{{ $friend->name }}</a>
-                              
-                              @endforeach
-                            @endif
-                        </div>
-
-                    </div>
-            </div>
-        </div>
+@extends('layouts.bothhome')
 
 
+@section('button')
+  {{ Form::open(array('url' => route('send', ['fchatkey' => $fchatkey]), 'method' => 'post', 'class'=>'chatform')) }}
+    {{ Form::text('message', null,['id'=>'textin']) }}
+    {{ Form::submit('Send', ['class' => 'btn btn-default send' , 'id' => 'sendbut']) }}
+  {{ Form::close() }}
 
-
-        <!-- Modal -->
-        <div id="myModal" class="modal fade" role="dialog">
-          <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Add Friend</h4>
-              </div>
-
-              <form action="add" method="post">
-                <div class="modal-body">
-                  <div class="form-group">
-                    <label for="usr">Username:</label>
-                    <input type="text" class="form-control" id="usr">
-                  </div>
-                </div>
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" id="add">Add</button>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-              </form>
-
-
-            </div>
-
-          </div>
-        </div>
-
-
-    </div>
-    <input type="hidden" value="{{ $fchatkey }}" id="fkey">
-</div>
 @endsection
