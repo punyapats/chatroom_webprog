@@ -13,9 +13,11 @@ class Friendchat extends Migration
     public function up()
     {
         Schema::create('fchat', function (Blueprint $table) {
+
             $table->string('fchatkey');
             $table->string('text');
-            $table->date('date');
+            $table->timestamp('date');
+
         });
     }
 

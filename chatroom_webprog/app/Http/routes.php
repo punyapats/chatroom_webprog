@@ -27,12 +27,15 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+
+Route::post('/addfriend','HomeController@addfriend');
 // Add Friend
 // Route::post('/addfriend','HomeController@addfriend');
+
 Route::get('/', 'HomeController@index');
 
 Route::get('add', 'HomeController@addfriend');
 
-Route::post('/send', 'HomeController@send');
+Route::post('/chat/{fchatkey}/send', ['as' => 'send', 'uses' => 'HomeController@send']); 
 
-Route::post('/chat/{fchatkey}', 'HomeController@getchat');
+Route::get('/chat/{fchatkey}', 'HomeController@getchat');

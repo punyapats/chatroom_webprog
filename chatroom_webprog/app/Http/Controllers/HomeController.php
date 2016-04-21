@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use Illuminate\Support\Facades\Input;
+use Redirect;
 
 class HomeController extends Controller
 {
@@ -31,13 +32,13 @@ class HomeController extends Controller
         // $friendlist = DB::table('flist')->where('user',$id)->get();
         $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey')->get();
 
-        $fname=['friend'=>'Not Select'];
-        $fname=[$fname];
-        $chat=['text'=>'No chat','date'=>'-'];
-        $chat=[$chat];
+        $fname='';
+        // $fname=[$fname];
+        $chat='';
+        // $chat=[$chat];
         
 
-        return view('home',compact('friendlist'),compact('fname'),compact('chat'));
+        return view('home',compact('friendlist','fname','chat'));
         // return $fname;
 
     }
@@ -70,21 +71,26 @@ class HomeController extends Controller
             DB::table('flist')->insert(
                 array('user' => $userid, 'friend' => $fid, 'fchatkey' => $temp)
                 );
+
          }
         return back();
     }
+
     public function getchat($fchatkey)
     {
         $chat = DB::table('fchat')->where('fchatkey',$fchatkey)->get();
 
         $id = Auth::user()->id;
         // $friendlist = DB::table('flist')->where('user',$id)->get();
-        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name')->get();
+        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey')->get();
 
-        $fname = DB::table('flist')->where('user',$id)->where('fchatkey',$fchatkey)->first();
+        $fchat = DB::table('flist')->where('user',$id)->where('fchatkey',$fchatkey)->select('friend')->get();
 
+        //$fname = DB::table('users')->where('id',$fchat[0]->friend)->get();
+
+        return view('home',compact('friendlist','chat','fname','fchatkey'));
         // return view('home',compact('friendlist'),compact('chat'),compact('fname'));
-        return view('home',compact('friendlist'),compact('chat'),compact('fname'));
+        // return $chat;
     }
 
 
@@ -107,10 +113,18 @@ class HomeController extends Controller
         // $friendlist = DB::table('flist')->where('user'= $id);
 
         // return  response()->compact($friendlist);
-    // }
 
-    public function send()
+    //}
+
+
+    public function send($fchatkey)
     {
-        return back();
+        DB::table('fchat')->insert(
+            ['text'=> Input::get('message'),'fchatkey'=> $fchatkey]
+        );  
+
+        $chat = DB::table('fchat')->where('fchatkey', $fchatkey)->get();
+
+        return view('home',compact('chat','fchatkey'));
     }
 }
