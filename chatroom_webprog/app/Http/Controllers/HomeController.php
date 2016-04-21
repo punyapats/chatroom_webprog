@@ -123,8 +123,8 @@ class HomeController extends Controller
             ['text'=> Input::get('message'),'fchatkey'=> $fchatkey]
         );  
 
-        $chathistory = DB::table('fchat')->where('fchatkey', $fchatkey);
+        $chat = DB::table('fchat')->where('fchatkey', $fchatkey)->get();
 
-        return Redirect::to('home')->with('chathistory', $chathistory);
+        return view('home',compact('chat'));
     }
 }
