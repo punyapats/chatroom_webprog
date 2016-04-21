@@ -137,9 +137,9 @@ class HomeController extends Controller
 
     public function send($fchatkey)
     {
-
+        $name = Auth::user()->name;
         DB::table('fchat')->insert(
-            ['text'=> Input::get('message'),'fchatkey'=> $fchatkey]
+            ['text'=> $name.'-'.Input::get('message'),'fchatkey'=> $fchatkey]
         );  
 
         $chat = DB::table('fchat')->where('fchatkey', $fchatkey)->get();
@@ -174,8 +174,9 @@ class HomeController extends Controller
 
     public function gsend($gchatkey){
 
+        $name = Auth::user()->name;
         DB::table('gchat')->insert(
-            ['text'=> Input::get('message'),'gchatkey'=> $gchatkey]
+            ['text'=> $name.'-'.Input::get('message'),'gchatkey'=> $gchatkey]
         );  
 
         $chat = DB::table('gchat')->where('gchatkey', $gchatkey)->get();
