@@ -34,9 +34,40 @@ class HomeController extends Controller
         $chat=[];
 
         // return view('home',compact('friendlist'));
+
         return view('home',compact('friendlist'),compact('chat'),compact('fname'));
+
     }
 
+    public function addfriend(){
+        $userid = Input::get('userid');
+        $femail = Input::get('femail');
+        $friend = DB::table('users')->where('email', $femail);
+        $fid = $friend -> id ;
+        if(exist($friend)){
+            return;
+        }
+        if(intval($userid)<intval($fid)){
+            $temp = $userid.'#'.$fid;
+            DB::table('flist')->insert(
+                array('user' => $userid, 'friend' => $fid, 'fchatkey' => $temp)
+            );
+            DB::table('flist')->insert(
+                array('user' => $fid, 'friend' => $userid, 'fchatkey' => $temp)
+            );
+
+                
+        }else {
+            if(intval($userid)<intval($fid)){
+            $temp = $fid.'#'.$userid;
+            DB::table('flist')->insert(
+                array('user' => $fid, 'friend' => $userid, 'fchatkey' => $temp)
+                );
+            }
+            DB::table('flist')->insert(
+                array('user' => $userid, 'friend' => $fid, 'fchatkey' => $temp)
+                );
+            }
 
     public function getchat($fchatkey)
     {
@@ -72,13 +103,6 @@ class HomeController extends Controller
 
         // return  response()->compact($friendlist);
     }
-    // public function getfriendlist($id){
-    //     // $friendlist = DB::select('SELECT * FROM flist WHERE user='.$id);
-    //     $friendlist = DB::table('flist')->where('user'=$id)
-
-    //     return  response()->compact($friendlist);
-    // }
-
 
     public function send()
     {
