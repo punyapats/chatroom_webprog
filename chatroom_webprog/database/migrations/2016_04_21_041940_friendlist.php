@@ -13,7 +13,7 @@ class Friendlist extends Migration
     public function up()
     {
         Schema::create('flist', function (Blueprint $table) {
-            $table->increment('id');
+            $table->increments('id');
             $table->string('user');
             $table->string('friend');
             $table->string('fchatkey');
