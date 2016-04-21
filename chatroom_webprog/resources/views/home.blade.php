@@ -109,7 +109,7 @@
                     <input type="text" class="form-control" id="gname">
                     @if(isset($friendlist))
                               @foreach ($friendlist as $friend)
-                                <input type='checkbox' value='{{$friend->friend}}'>{{$friend->name}}
+                                <input type='checkbox' name='checklist' value='{{$friend->friend}}'>{{$friend->name}}
                                 <br>
                               @endforeach
                     @endif
