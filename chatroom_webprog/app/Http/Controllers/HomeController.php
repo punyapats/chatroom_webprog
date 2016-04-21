@@ -83,7 +83,7 @@ class HomeController extends Controller
 
         $fchat = DB::table('flist')->where('user',$id)->where('fchatkey',$fchatkey)->select('friend')->get();
 
-        //$fname = DB::table('users')->where('id',$fchat[0]->friend)->get();
+        $fname = DB::table('users')->where('id',$fchat[0]->friend)->get();
 
         return view('home',compact('friendlist','chat','fname','fchatkey'));
         // return view('home',compact('friendlist'),compact('chat'),compact('fname'));
