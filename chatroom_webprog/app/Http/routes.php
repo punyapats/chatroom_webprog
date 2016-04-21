@@ -31,9 +31,12 @@ Route::get('/home', 'HomeController@index');
 Route::post('submit', 'ChatController@submit');
 
 Route::post('/addfriend','HomeController@addfriend');
+// Add Friend
+// Route::post('/addfriend','HomeController@addfriend');
+
 Route::get('/', 'HomeController@index');
 
-Route::post('/add', 'HomeController@add');
+Route::post('/add', 'HomeController@addfriend');
 
 Route::post('/send', 'HomeController@send');
 
