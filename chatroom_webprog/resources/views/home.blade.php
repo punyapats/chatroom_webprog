@@ -10,18 +10,25 @@
             <div class="panel panel-default">
 
                 <div class="panel-heading">ChatBox - 
+                    @if($fname!=='')
+                      @foreach($fname as $names)
+                        {{ $names->name }}
+                      @endforeach
+                    @endif
 
                 </div>
                 <div class="panel-body chatbody">
                     <div class="chat">
-                        @if(isset($chathistory))
-                          @foreach($chathistory as $achat)
-                            <p>{{ $achat->text }} - {{ $achat->date }} </p>
-                          @endforeach
-                        @endif
+
+                    @if($chat!=='')
+                      @foreach($chat as $cchat)
+                        {{ $cchat->date }}-{{ $cchat->text }}
+                      @endforeach
+                    @endif
+                          
                     </div>
 
-                    {{ Form::open(array('url' => 'submit', 'method' => 'post')) }}
+                    {{ Form::open(array('url' => '/send', 'method' => 'post')) }}
                       {{ Form::text('message', null,['id'=>'textin']) }}
                       {{ Form::submit('Send', ['class' => 'btn btn-large btn-primary send' , 'id' => 'sendbut']) }}
                     {{ Form::close() }}    

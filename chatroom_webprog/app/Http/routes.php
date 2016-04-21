@@ -28,8 +28,6 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 
-Route::post('submit', 'ChatController@submit');
-
 Route::post('/addfriend','HomeController@addfriend');
 // Add Friend
 // Route::post('/addfriend','HomeController@addfriend');
@@ -40,4 +38,4 @@ Route::post('/add', 'HomeController@addfriend');
 
 Route::post('/send', 'HomeController@send');
 
-Route::post('/chat/{fchatkey}', 'HomeController@getchat');
+Route::get('/chat/{fchatkey}', 'HomeController@getchat');
