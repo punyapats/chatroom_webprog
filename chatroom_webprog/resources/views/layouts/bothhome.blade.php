@@ -38,7 +38,7 @@
                 <div class="panel-heading">Chat List</div>
                     <div class="panel-body">
                        <span>Friend List</span>
-                       <button type="button" class="col-md-offset-8 btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Add Friend</button>
+                       <button type="button" class="col-md-offset-8 btn btn-default btn-md addbut" data-toggle="modal" data-target="#myModal">Add Friend</button>
                         <div class="lfriend" id="friend">
                           <ul>
                             @if(isset($friendlist))
@@ -51,7 +51,7 @@
                         </div>
                         
                         <span>Group List</span>
-                        <button type="button" class="col-md-offset-8 btn btn-info btn-md" data-toggle="modal" data-target="#createModal">Create Group</button>
+                        <button type="button" class="col-md-offset-8 btn btn-default btn-md addbut" data-toggle="modal" data-target="#createModal">Create Group</button>
                         <ul>
                             @if(isset($grouplist))
                               @foreach ($grouplist as $group)
