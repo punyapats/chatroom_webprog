@@ -21,13 +21,13 @@
                 </div>
                 <div class="panel-body chatbody">
                     <div class="chat">
-
+                    @if(isset($chat))
                     @if(is_array($chat) || is_object($chat))
                       @foreach($chat as $cchat)
-                        <p>{{ $cchat->date }}   -   {{ $cchat->text }}</p>
+                        <p>{{ $cchat->date }} - {{ $cchat->text }}</p>
                       @endforeach
                     @endif
-                          
+                    @endif
                     </div>
 
                     {{ Form::open(array('url' => route('send', ['fchatkey' => $fchatkey]), 'method' => 'post')) }}
