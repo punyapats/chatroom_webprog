@@ -33,6 +33,7 @@ $(document).ready(function()
                 $.each(res,function(index,value){
                     $("div.chat").append('<p>'+value['date']+" - "+value['text']+'</p>');
                 });
+                location.reload();
             }
         });
     },5000);
