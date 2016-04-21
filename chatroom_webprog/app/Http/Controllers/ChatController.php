@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
-use App\models\fchat;
 use Illuminate\Support\Facades\Input;
 use DB;
 use Redirect;

@@ -4,22 +4,13 @@
 <div class="container chatbox">
     <div class="row">
         <div class="col-md-8 col-md">    
-            <div class="panel panel-default">
-                <div class="panel-heading">ChatBox - {{ $fname->friend }}</div>
-
-                <script src="js/chat.js"></script>
-                <div class="panel-body chatbody">
-                    <div class="chat">
-                        <li>{{ $chat->date }}-{{ $chat->text }}</li>
-                    </div>
+            
 
                     {{ Form::open(array('url' => 'submit', 'method' => 'post')) }}
                       {{ Form::text('message', null,['id'=>'textin']) }}
                       {{ Form::submit('Send', ['class' => 'btn btn-large btn-primary send' , 'id' => 'sendbut']) }}
                     {{ Form::close() }}
-                    
-                </div>
-            </div>
+              
         </div>
 
         <div class="col-md-4 col-md"> 
