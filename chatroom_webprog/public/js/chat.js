@@ -1,5 +1,18 @@
 $(document).ready(function()
 {
+
+    // $("#sendbut").click(function(){
+    //     var textin = $("#textin").val();
+    //     $.ajax({
+    //         url: '/submit',
+    //         type: 'POST',
+    //         data: {textchat:textin},
+    //         dataType: 'json',
+    //         success: function(doctors)
+    //     });
+    // });
+
+
     $("#select_dep").click(function(){
         
         $.ajax(
@@ -37,5 +50,5 @@ $(document).ready(function()
                 $('#select_doc').selectpicker('refresh');
             }
         });
-    }
+    });
 });

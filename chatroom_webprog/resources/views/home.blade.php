@@ -7,12 +7,15 @@
             <div class="panel panel-default">
                 <div class="panel-heading">ChatBox</div>
 
+                <script src="js/chat.js"></script>
                 <div class="panel-body chatbody">
                     <div class="chat">
-                        You are logged in!
+                       
                     </div>
-                    {{ Form::text('message') }}
-                    {{ Form::submit('Send', ['class' => 'btn btn-large btn-primary send']) }}
+                    {{ Form::open(array('url' => 'submit', 'method' => 'post')) }}
+                      {{ Form::text('message', null,['id'=>'textin']) }}
+                      {{ Form::submit('Send', ['class' => 'btn btn-large btn-primary send' , 'id' => 'sendbut']) }}
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>

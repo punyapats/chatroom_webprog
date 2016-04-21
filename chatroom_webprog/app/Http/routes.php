@@ -25,3 +25,5 @@ Route::get('register',function(){
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::post('submit', 'ChatController@submit');

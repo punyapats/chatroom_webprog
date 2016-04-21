@@ -15,7 +15,7 @@ class Groupchat extends Migration
         Schema::create('gchat', function (Blueprint $table) {
             $table->string('groupname');
             $table->string('text');
-            $table->string('date');
+            $table->timestamp('date');
         });
     }
 
