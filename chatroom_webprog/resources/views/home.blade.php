@@ -5,17 +5,19 @@
     <div class="row">
         <div class="col-md-8 col-md">    
             <div class="panel panel-default">
-                <div class="panel-heading">ChatBox</div>
+                <div class="panel-heading">ChatBox - {{ $fname->friend }}</div>
 
                 <script src="js/chat.js"></script>
                 <div class="panel-body chatbody">
                     <div class="chat">
-                       
+                        <li>{{ $chat->date }}-{{ $chat->text }}</li>
                     </div>
+
                     {{ Form::open(array('url' => 'submit', 'method' => 'post')) }}
                       {{ Form::text('message', null,['id'=>'textin']) }}
                       {{ Form::submit('Send', ['class' => 'btn btn-large btn-primary send' , 'id' => 'sendbut']) }}
                     {{ Form::close() }}
+                    
                 </div>
             </div>
         </div>
@@ -24,15 +26,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Friend List</div>
                     <div class="panel-body">
-                        <button type="button" class="col-md-offset-8 btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Add Friend</button>
-                        <ul>
-                          <li>f1</li>
-                          <li>f2</li>
+                       <button type="button" class="col-md-offset-8 btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Add Friend</button>
+                        <div class="lfriend">
+                            @foreach ($friendlist as $friend)
+                              <a href="/chat/{{ $friend->fchatkey }}">{{ $friend->name }}</a>
+                            
+                            @endforeach
+                        </div>
 
-                          {{--@foreach ($flist as $friend)
-                              <li>{{ $friend }}</li>
-                          @endforeach--}}
-                        <li>
                     </div>
             </div>
         </div>
@@ -50,16 +51,22 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Add Friend</h4>
               </div>
-              <div class="modal-body">
-                <div class="form-group">
-                  <label for="usr">Username:</label>
-                  <input type="text" class="form-control" id="usr">
+
+              <form action="add" method="post">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="usr">Username:</label>
+                    <input type="text" class="form-control" id="usr">
+                  </div>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="add">Add</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
+
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-default" id="add">Add</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </form>
+
+
             </div>
 
           </div>

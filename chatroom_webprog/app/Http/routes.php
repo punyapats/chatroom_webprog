@@ -10,9 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
 
 Route::get('login', function () {
     return view('auth.login');
@@ -22,8 +22,19 @@ Route::get('register',function(){
 	return view('auth.register');
 });
 
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+
 Route::post('submit', 'ChatController@submit');
+
+Route::post('/addfriend','HomeController@addfriend');
+Route::get('/', 'HomeController@index');
+
+Route::post('/add', 'HomeController@add');
+
+Route::post('/send', 'HomeController@send');
+
+Route::post('/chat/{fchatkey}', 'HomeController@getchat');

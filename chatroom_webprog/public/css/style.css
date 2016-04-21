@@ -24,13 +24,18 @@
 }
 
 input[name="message"]{
-	height: 15%;
+	height: 100%;
 	width: 80%
 }
 .btn.btn-large.btn-primary.send{
-	height: 15%;
+	height: 100%;
 	width: 18%;
 	font-size: 24px
+}
+
+.chatform{
+	height: 15%;
+	width: 100%;
 }
 
 
