@@ -29,7 +29,7 @@
                     <div class="textin">
                       {{ Form::open(array('url' => route('send', ['fchatkey' => $fchatkey]), 'method' => 'post')) }}
                         {{ Form::text('message', null,['id'=>'textin']) }}
-                        {{ Form::submit('Send', ['class' => 'btn btn-large btn-default send' , 'id' => 'sendbut']) }}
+                        {{ Form::submit('Send', ['class' => 'btn btn-default send' , 'id' => 'sendbut']) }}
                       {{ Form::close() }}
                     </div>
                 </div>
@@ -40,7 +40,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Friend List</div>
                     <div class="panel-body">
-                       <button type="button" class="col-md-offset-8 btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Add Friend</button>
+                       <button type="button" class="col-md-offset-8 btn btn-default btn-md addbut" data-toggle="modal" data-target="#myModal">Add Friend</button>
                         <div class="lfriend" id="friend">
                           <ul>
                             @if(isset($friendlist))

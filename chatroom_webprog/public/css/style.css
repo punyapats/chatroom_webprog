@@ -37,11 +37,16 @@ input[name="message"]{
 }
 .send{
 	float: right;
+	margin-top: -4px;
 }
 
 .chatform{
 	height: 15%;
 	width: 100%;
+}
+
+.addbut{
+	float: right;
 }
 
 a:link {color: black;}      /* unvisited link */
