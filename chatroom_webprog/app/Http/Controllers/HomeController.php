@@ -47,10 +47,12 @@ class HomeController extends Controller
         $userid = Auth::id();
         $femail = Input::get('femail');
         $friend = DB::table('users')->where('email', $femail)->get();
-        $fid = $friend[0] -> id ;
-        // if(empty($id)){
-        //     return back();
-        // }
+        if($friend!=[]){
+            $fid = $friend[0] -> id ;
+        }else {
+            return back();
+        }
+    
         if(intval($userid)<intval($fid)){
             $temp = $userid.'@'.$fid;
             DB::table('flist')->insert(
