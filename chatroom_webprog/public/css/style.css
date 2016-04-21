@@ -26,19 +26,18 @@
 }
 
 input[name="message"]{
-	height: 30px;
-	width: 87%;
+	margin-top: -3px;
+	height: 40px;
+	width: 80%;
 	float:left;
 }
-.btn.btn-large.btn-primary.send{
-	height: 100%;
+.btn.send{
 	width: 18%;
-	font-size: 24px
+	font-size: 20px;
 }
 .send{
 	float: right;
 	margin-top: -4px;
-	width: 80px;
 }
 
 .chatform{
