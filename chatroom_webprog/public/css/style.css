@@ -26,14 +26,14 @@
 }
 
 input[name="message"]{
-	height: 30px;
-	width: 90%;
+	margin-top: -3px;
+	height: 40px;
+	width: 80%;
 	float:left;
 }
-.btn.btn-large.btn-primary.send{
-	height: 100%;
+.btn.send{
 	width: 18%;
-	font-size: 24px
+	font-size: 20px;
 }
 .send{
 	float: right;
@@ -47,7 +47,8 @@ input[name="message"]{
 
 .addbut{
 	float: right;
-	margin-top: -20px;
+	margin-top: -27px;
+	width: 110px;
 }
 
 
