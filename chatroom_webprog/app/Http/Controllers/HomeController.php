@@ -36,9 +36,9 @@ class HomeController extends Controller
         // $fname=[$fname];
         $chat='';
         // $chat=[$chat];
-        
+        $fchatkey='';
 
-        return view('home',compact('friendlist','fname','chat'));
+        return view('home',compact('friendlist','fname','chat','fchatkey'));
         // return $fname;
 
     }
