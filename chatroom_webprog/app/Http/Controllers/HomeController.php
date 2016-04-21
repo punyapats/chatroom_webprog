@@ -29,7 +29,8 @@ class HomeController extends Controller
         $id = Auth::user()->id;
         $friendlist = DB::table('flist')->where('user',$id)->get();
         // return view('home',compact('friendlist'));
-        return view('home',compact('friendlist'));
+        return view('home',compact('friendlist'))
+            ->with('id',$id);
     }
 
     public function addfriend(){
