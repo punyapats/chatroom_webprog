@@ -4,11 +4,7 @@
 <div class="container chatbox">
     <div class="row">
         <div class="col-md-8 col-md">    
-            
-
-                    
             <div class="panel panel-default">
-
                 <div class="panel-heading">ChatBox - 
                     @if(isset($fname))
                     @if(is_array($fname) || is_object($fname))
@@ -21,22 +17,22 @@
                 </div>
                 <div class="panel-body chatbody">
                     <div class="chat">
-                    @if(isset($chat))
-                    @if(is_array($chat) || is_object($chat))
-                      @foreach($chat as $cchat)
-                        <p>{{ $cchat->date }} - {{ $cchat->text }}</p>
-                      @endforeach
-                    @endif
-                    @endif
+                      @if(isset($chat))
+                      @if(is_array($chat) || is_object($chat))
+                        @foreach($chat as $cchat)
+                          <p>{{ $cchat->date }} - {{ $cchat->text }}</p>
+                        @endforeach
+                      @endif
+                      @endif
                     </div>
-
-                    {{ Form::open(array('url' => route('send', ['fchatkey' => $fchatkey]), 'method' => 'post')) }}
-                      {{ Form::text('message', null,['id'=>'textin']) }}
-                      {{ Form::submit('Send', ['class' => 'btn btn-large btn-primary send' , 'id' => 'sendbut']) }}
-                    {{ Form::close() }}    
-                    
+                    <br>
+                    <div class="textin">
+                      {{ Form::open(array('url' => route('send', ['fchatkey' => $fchatkey]), 'method' => 'post')) }}
+                        {{ Form::text('message', null,['id'=>'textin']) }}
+                        {{ Form::submit('Send', ['class' => 'btn btn-large btn-default send' , 'id' => 'sendbut']) }}
+                      {{ Form::close() }}
+                    </div>
                 </div>
-                
             </div>
         </div>
 
