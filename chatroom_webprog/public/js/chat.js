@@ -17,4 +17,20 @@ $(document).ready(function()
         });
 
     })
+
+    $("#createg").click(function(){
+        var gname = $('#gname').val();
+        $.ajax({
+            type: "GET",
+            url: "creategroup",
+            data: {
+                gname : gname
+            },
+            success: function(){
+                alert("Created Group!");
+            }
+            ,datatype : 'json'
+        });
+
+    })
 });

@@ -30,7 +30,7 @@ class HomeController extends Controller
     {
         $id = Auth::user()->id;
         // $friendlist = DB::table('flist')->where('user',$id)->get();
-        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey')->get();
+        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey','flist.friend')->get();
 
         $fname='';
         // $fname=[$fname];
@@ -79,42 +79,24 @@ class HomeController extends Controller
 
         $id = Auth::user()->id;
         // $friendlist = DB::table('flist')->where('user',$id)->get();
-        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey')->get();
+        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey','flist.friend')->get();
 
         $fchat = DB::table('flist')->where('user',$id)->where('fchatkey',$fchatkey)->select('friend')->get();
         if($fchat!==[]){
             $fname = DB::table('users')->where('id',$fchat[0]->friend)->get();
         }
-    
+
 
         return view('home',compact('friendlist','chat','fname','fchatkey'));
         // return view('home',compact('friendlist'),compact('chat'),compact('fname'));
         // return $chat;
     }
 
+    public function creategroup(){
 
+        
 
-    // public function addfriend(){
-    //     $friend = DB::select('SELECT email, id  FROM user');
-    //     $meds = array();
-
-    //     foreach($medicines as $medicine ) {
-    //         $med_info = [
-    //             'med_id' => $medicine->med_id,
-    //             'med_name' => $medicine->med_name];
-    //         array_push($meds, $med_info);
-    //     }
-
-    //     return  response()->json(['medicine_list' => $meds ]);
-    // }
-    // public function getfriendlist($id){
-        // $friendlist = DB::select('SELECT * FROM flist WHERE user='.$id);
-        // $friendlist = DB::table('flist')->where('user'= $id);
-
-        // return  response()->compact($friendlist);
-
-    //}
-
+    }
 
     public function send($fchatkey)
     {
