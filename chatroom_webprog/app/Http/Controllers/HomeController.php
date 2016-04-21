@@ -28,14 +28,16 @@ class HomeController extends Controller
     {
         $id = Auth::user()->id;
         // $friendlist = DB::table('flist')->where('user',$id)->get();
-        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name')->get();
+        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey')->get();
 
-        $fname=[];
-        $chat=[];
+        $fname=['friend'=>'Not Select'];
+        $fname=[$fname];
+        $chat=['text'=>'No chat','date'=>'-'];
+        $chat=[$chat];
+        
 
-        // return view('home',compact('friendlist'));
-
-        return view('home',compact('friendlist'),compact('chat'),compact('fname'));
+        return view('home',compact('friendlist'),compact('fname'),compact('chat'));
+        // return $fname;
 
     }
 
@@ -81,6 +83,7 @@ class HomeController extends Controller
 
         $fname = DB::table('flist')->where('user',$id)->where('fchatkey',$fchatkey)->first();
 
+        // return view('home',compact('friendlist'),compact('chat'),compact('fname'));
         return view('home',compact('friendlist'),compact('chat'),compact('fname'));
     }
 

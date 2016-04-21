@@ -16,7 +16,7 @@ class Friendchat extends Migration
 
             $table->string('fchatkey');
             $table->string('text');
-            $table->date('date');
+            $table->timestamp('date');
 
         });
     }

@@ -10,9 +10,14 @@ use Redirect;
 class ChatController extends BaseController
 {
     public function submit(){
+
+    	$fchatkey='3@5';
     	DB::table('fchat')->insert(
-		    ['text'=> Input::get('message')]
+		    ['text'=> Input::get('message'),'fchatkey'=> $fchatkey]
 		);  
-    	return Redirect::to('home');
+
+		$chathistory = DB::table('fchat')->where('fchatkey', $fchatkey);
+
+    	return Redirect::to('home')->with('chathistory', $chathistory);
    	}
 }

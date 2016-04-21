@@ -6,11 +6,29 @@
         <div class="col-md-8 col-md">    
             
 
+                    
+            <div class="panel panel-default">
+
+                <div class="panel-heading">ChatBox - 
+
+                </div>
+                <div class="panel-body chatbody">
+                    <div class="chat">
+                        @if(isset($chathistory))
+                          @foreach($chathistory as $achat)
+                            <p>{{ $achat->text }} - {{ $achat->date }} </p>
+                          @endforeach
+                        @endif
+                    </div>
+
                     {{ Form::open(array('url' => 'submit', 'method' => 'post')) }}
                       {{ Form::text('message', null,['id'=>'textin']) }}
                       {{ Form::submit('Send', ['class' => 'btn btn-large btn-primary send' , 'id' => 'sendbut']) }}
-                    {{ Form::close() }}
-              
+                    {{ Form::close() }}    
+                    
+                </div>
+                
+            </div>
         </div>
 
         <div class="col-md-4 col-md"> 
