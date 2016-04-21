@@ -18,13 +18,13 @@ $(document).ready(function()
     });
 
     // var key = '{{ $fchatkey }}';
-    var key = $('#fkey').val();
+    var key = $('#gkey').val();
       setInterval(function(){
           $.ajax({
               type: "GET",
-              url: "/update",
+              url: "/gupdate",
               data: {
-                  fchatkey : key
+                  gchatkey : key
               },
               success:function(res)
               {

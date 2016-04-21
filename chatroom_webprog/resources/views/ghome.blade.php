@@ -25,27 +25,5 @@
 
 @section('script')
 
-<script type="text/javascript">
-  $(document).ready(function()
-    {
-      var key = $('#gkey').val();
-      setInterval(function(){
-          $.ajax({
-              type: "GET",
-              url: "/gupdate",
-              data: {
-                  gchatkey : key
-              },
-              success:function(res)
-              {
-                  // alert(res[0]['text']);
-                  $("div.chat").empty();
-                  $.each(res,function(index,value){
-                      $("div.chat").append('<p>'+value['date']+" - "+value['text']+'</p>');
-                  });
-              }
-          });
-      },10000);
-    });
-</script>
+<script src='../js/gchat.js'></script>
 @endsection

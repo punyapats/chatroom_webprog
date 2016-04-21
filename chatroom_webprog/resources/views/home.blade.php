@@ -21,27 +21,7 @@
 
 @section('script')
 
-<script type="text/javascript">
-  $(document).ready(function()
-    {
-      var key = $('#fkey').val();
-      setInterval(function(){
-          $.ajax({
-              type: "GET",
-              url: "/update",
-              data: {
-                  fchatkey : key
-              },
-              success:function(res)
-              {
-                  // alert(res[0]['text']);
-                  $("div.chat").empty();
-                  $.each(res,function(index,value){
-                      $("div.chat").append('<p>'+value['date']+" - "+value['text']+'</p>');
-                  });
-              }
-          });
-      },10000);
-    });
-</script>
+<script src='../js/chat.js'></script>
+
+
 @endsection
