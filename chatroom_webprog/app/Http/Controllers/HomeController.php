@@ -30,13 +30,13 @@ class HomeController extends Controller
         // $friendlist = DB::table('flist')->where('user',$id)->get();
         $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey')->get();
 
-        $fname=['friend'=>'Not Select'];
-        $fname=[$fname];
-        $chat=['text'=>'No chat','date'=>'-'];
-        $chat=[$chat];
+        $fname='';
+        // $fname=[$fname];
+        $chat='';
+        // $chat=[$chat];
         
 
-        return view('home',compact('friendlist'),compact('fname'),compact('chat'));
+        return view('home',compact('friendlist','fname','chat'));
         // return $fname;
 
     }
@@ -77,12 +77,15 @@ class HomeController extends Controller
 
         $id = Auth::user()->id;
         // $friendlist = DB::table('flist')->where('user',$id)->get();
-        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name')->get();
+        $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey')->get();
 
-        $fname = DB::table('flist')->where('user',$id)->where('fchatkey',$fchatkey)->first();
+        $fchat = DB::table('flist')->where('user',$id)->where('fchatkey',$fchatkey)->select('friend')->get();
 
+        $fname = DB::table('users')->where('id',$fchat[0]->friend)->get();
+
+        return view('home',compact('friendlist','chat','fname'));
         // return view('home',compact('friendlist'),compact('chat'),compact('fname'));
-        return view('home',compact('friendlist'),compact('chat'),compact('fname'));
+        // return $chat;
     }
 
 

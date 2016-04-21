@@ -7,11 +7,20 @@
             <div class="panel panel-default">
 
                 <div class="panel-heading">ChatBox - 
+                    @if($fname!=='')
+                      @foreach($fname as $names)
+                        {{ $names->name }}
+                      @endforeach
+                    @endif
 
                 </div>
                 <div class="panel-body chatbody">
                     <div class="chat">
-
+                      @if($chat!=='')
+                      @foreach($chat as $cchat)
+                        {{ $cchat->date }}-{{ $cchat->text }}
+                      @endforeach
+                    @endif
                           
                     </div>
 
