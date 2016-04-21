@@ -31,7 +31,7 @@ Route::get('/home', 'HomeController@index');
 // Route::post('/addfriend','HomeController@addfriend');
 Route::get('/', 'HomeController@index');
 
-Route::post('/add', 'HomeController@addfriend');
+Route::get('add', 'HomeController@addfriend');
 
 Route::post('/send', 'HomeController@send');
 

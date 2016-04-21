@@ -1,20 +1,17 @@
 $(document).ready(function()
 {
     $("#add").click(function(){
-        var femail = $('usr').val();
-        var userid = "{{ Auth::user()->id }}";
+        var femail = $('#usr').val();
         $.ajax({
-            type: "POST",
-            url: "addfriend",
+            type: "GET",
+            url: "add",
             data: {
-                femail:femail,
-                userid:userid
+                femail : femail
             },
             success: function(){
                 alert("Add friend Success");
             }
-                ,
-            dataType: dataType
+            ,datatype : 'json'
         });
-    }
+    })
 });

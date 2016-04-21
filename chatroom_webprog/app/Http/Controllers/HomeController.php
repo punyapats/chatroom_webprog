@@ -6,6 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use Illuminate\Support\Facades\Input;
 
 class HomeController extends Controller
 {
@@ -42,15 +43,15 @@ class HomeController extends Controller
     }
 
     public function addfriend(){
-        $userid = Input::get('userid');
+        $userid = Auth::id();
         $femail = Input::get('femail');
-        $friend = DB::table('users')->where('email', $femail);
-        $fid = $friend -> id ;
-        if(exist($friend)){
-            return;
-        }
+        $friend = DB::table('users')->where('email', $femail)->get();
+        $fid = $friend[0] -> id ;
+        // if(empty($id)){
+        //     return back();
+        // }
         if(intval($userid)<intval($fid)){
-            $temp = $userid.'#'.$fid;
+            $temp = $userid.'@'.$fid;
             DB::table('flist')->insert(
                 array('user' => $userid, 'friend' => $fid, 'fchatkey' => $temp)
             );
@@ -61,7 +62,7 @@ class HomeController extends Controller
                 
         }else {
             if(intval($userid)<intval($fid)){
-            $temp = $fid.'#'.$userid;
+            $temp = $fid.'@'.$userid;
             DB::table('flist')->insert(
                 array('user' => $fid, 'friend' => $userid, 'fchatkey' => $temp)
                 );
@@ -70,6 +71,7 @@ class HomeController extends Controller
                 array('user' => $userid, 'friend' => $fid, 'fchatkey' => $temp)
                 );
          }
+        return back();
     }
     public function getchat($fchatkey)
     {
