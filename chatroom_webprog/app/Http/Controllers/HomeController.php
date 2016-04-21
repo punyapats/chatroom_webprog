@@ -36,31 +36,35 @@ class HomeController extends Controller
     }
 
     public function addfriend(){
-        $friend = DB::select('SELECT email, id  FROM user');
-        $meds = array();
-
-        foreach($medicines as $medicine ) {
-            $med_info = [
-                'med_id' => $medicine->med_id,
-                'med_name' => $medicine->med_name];
-            array_push($meds, $med_info);
+        $userid = Input::get('userid');
+        $femail = Input::get('femail');
+        $friend = DB::table('users')->where('email', $femail);
+        $fid = $friend -> id ;
+        if(exist($friend)){
+            return;
         }
+        if(intval($userid)<intval($fid)){
+            $temp = $userid.'#'.$fid;
+            DB::table('flist')->insert(
+                array('user' => $userid, 'friend' => $fid, 'fchatkey' => $temp)
+            );
+            DB::table('flist')->insert(
+                array('user' => $fid, 'friend' => $userid, 'fchatkey' => $temp)
+            );
 
-        return  response()->json(['medicine_list' => $meds ]);
+                
+        }else {
+            if(intval($userid)<intval($fid)){
+            $temp = $fid.'#'.$userid;
+            DB::table('flist')->insert(
+                array('user' => $fid, 'friend' => $userid, 'fchatkey' => $temp)
+                );
+            }
+            DB::table('flist')->insert(
+                array('user' => $userid, 'friend' => $fid, 'fchatkey' => $temp)
+                );
+            }
     }
-    public function getfriendlist($id){
-        // $friendlist = DB::select('SELECT * FROM flist WHERE user='.$id);
-        // $friendlist = DB::table('flist')->where('user'= $id);
-
-        // return  response()->compact($friendlist);
-    }
-    // public function getfriendlist($id){
-    //     // $friendlist = DB::select('SELECT * FROM flist WHERE user='.$id);
-    //     $friendlist = DB::table('flist')->where('user'=$id)
-
-    //     return  response()->compact($friendlist);
-    // }
-
 
     public function send()
     {

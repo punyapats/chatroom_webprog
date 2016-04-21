@@ -2,6 +2,19 @@ $(document).ready(function()
 {
     $("#add").click(function(){
         var femail = $('usr').val();
-        $.post("addfriend.php",{femail:})
+        var userid = "{{ Auth::user()->id }}";
+        $.ajax({
+            type: "POST",
+            url: "addfriend",
+            data: {
+                femail:femail,
+                userid:userid
+            },
+            success: function(){
+                alert("Add friend Success");
+            }
+                ,
+            dataType: dataType
+        });
     }
 });
