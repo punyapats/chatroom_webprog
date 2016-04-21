@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col-md-8 col-md">    
             <div class="panel panel-default">
-                <div class="panel-heading">ChatBox</div>
+                <div class="panel-heading">ChatBox - {{ $fname->friend }}</div>
 
                 <div class="panel-body chatbody">
                     <div class="chat">
-                        You are logged in!
+                        <li>{{ $chat->date }}-{{ $chat->text }}</li>
                     </div>
 
                     <form action="/send" method="post" class="chatform">
@@ -28,7 +28,7 @@
                         <button type="button" class="col-md-offset-2 btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Add Friend</button>
                         <div class="lfriend">
                             @foreach ($friendlist as $friend)
-                              <li>{{ $friend->name }}</li>
+                              <a href="/chat/{{ $friend->fchatkey }}">{{ $friend->name }}</a>
                             
                             @endforeach
                         </div>
