@@ -63,17 +63,17 @@ class HomeController extends Controller
             DB::table('flist')->insert(
                 array('user' => $userid, 'friend' => $fid, 'fchatkey' => $temp)
                 );
-            }
-
+         }
+    }
     public function getchat($fchatkey)
     {
-        $chat = DB::table('fchat')->where('fchatkey',$fchatkey)->get()
+        $chat = DB::table('fchat')->where('fchatkey',$fchatkey)->get();
 
         $id = Auth::user()->id;
         // $friendlist = DB::table('flist')->where('user',$id)->get();
         $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name')->get();
 
-        $fname = DB::table('flist')->where('user',$id)->where('fchatkey',$fchatkey)->first()
+        $fname = DB::table('flist')->where('user',$id)->where('fchatkey',$fchatkey)->first();
 
         return view('home',compact('friendlist'),compact('chat'),compact('fname'));
     }
@@ -98,7 +98,7 @@ class HomeController extends Controller
         // $friendlist = DB::table('flist')->where('user'= $id);
 
         // return  response()->compact($friendlist);
-    }
+    // }
 
     public function send()
     {
