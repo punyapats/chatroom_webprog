@@ -49,7 +49,12 @@ Route::get('/chat/{fchatkey}/update', 'HomeController@updatechat');
 
 Route::get('/update', 'HomeController@updatechat');
 
+Route::post('/chat//send', 'HomeController@rreturn');
+
 
 Route::get('/gchat/{gchatkey}', 'HomeController@getgchat');
 Route::post('/gchat/{gchatkey}/send', ['as' => 'gsend', 'uses' => 'HomeController@gsend']); 
+
+Route::get('/gupdate', 'HomeController@updategchat');
+Route::get('/gchat/{gchatkey}/gupdate', 'HomeController@updategchat');
 

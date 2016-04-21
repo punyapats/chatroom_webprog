@@ -137,6 +137,7 @@ class HomeController extends Controller
 
     public function send($fchatkey)
     {
+
         DB::table('fchat')->insert(
             ['text'=> Input::get('message'),'fchatkey'=> $fchatkey]
         );  
@@ -152,6 +153,20 @@ class HomeController extends Controller
     {
         $fchatkey = Input::get('fchatkey');
         $chat = DB::table('fchat')->where('fchatkey',$fchatkey)->get();
+
+        return $chat;
+    }
+
+
+    public function rreturn()
+    {
+        return back();
+    }
+
+    public function updategchat()
+    {
+        $gchatkey = Input::get('gchatkey');
+        $chat = DB::table('gchat')->where('gchatkey',$gchatkey)->get();
 
         return $chat;
     }
