@@ -6,6 +6,7 @@
         <div class="col-md-8 col-md">    
             <div class="panel panel-default">
            <!--      <div class="panel-heading">ChatBox - {{ $fname->friend }}</div>
+                <div class="panel-heading">ChatBox - {{ $fname->friend }}</div>
 
                 <div class="panel-body chatbody">
                     <div class="chat">
@@ -18,6 +19,7 @@
                     </form>
                     
                 </div> -->
+                </div>
             </div>
         </div>
 
