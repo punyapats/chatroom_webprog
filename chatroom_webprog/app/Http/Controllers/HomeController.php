@@ -108,9 +108,23 @@ class HomeController extends Controller
     }
 
     public function creategroup(){
+        $gname = Input::get('gname');
+        $userid = Auth::user()->id;
+        $checklist = Input::get('checklist');
+        $checklist = $checklist['checklist'];
+        $gchatkey = '';
+        DB::table('glist')->insert(
+                array('groupname' => $gname, 'user' => $userid)
+            );
+        $checklistlength = count($checklist);
+        for($i=0;$i<$checklistlength;$i++){
+            $gchatkey = $gchatkey.$checklist[$i].'a';
+            DB::table('glist')->insert(
+                array('groupname' => $gname, 'user' => $checklist[$i])
+            );
 
-        
-
+        }
+        // return $checklist;
     }
 
     public function send($fchatkey)

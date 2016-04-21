@@ -4,7 +4,11 @@
 <div class="container chatbox">
     <div class="row">
         <div class="col-md-8 col-md">    
+            
+
+                    
             <div class="panel panel-default">
+
                 <div class="panel-heading">ChatBox - 
                     @if(isset($fname))
                     @if(is_array($fname) || is_object($fname))
@@ -17,21 +21,19 @@
                 </div>
                 <div class="panel-body chatbody">
                     <div class="chat">
-                      @if(isset($chat))
-                      @if(is_array($chat) || is_object($chat))
-                        @foreach($chat as $cchat)
-                          <p>{{ $cchat->date }} - {{ $cchat->text }}</p>
-                        @endforeach
-                      @endif
-                      @endif
+                    @if(isset($chat))
+                    @if(is_array($chat) || is_object($chat))
+                      @foreach($chat as $cchat)
+                        <p>{{ $cchat->date }} - {{ $cchat->text }}</p>
+                      @endforeach
+                    @endif
+                    @endif
                     </div>
-                    <br>
-                    <div class="textin">
 
-                      @yield('button')
-
-                    </div>
+                    @yield('button')
+                    
                 </div>
+                
             </div>
         </div>
 
@@ -104,7 +106,7 @@
                     <input type="text" class="form-control" id="gname">
                     @if(isset($friendlist))
                               @foreach ($friendlist as $friend)
-                                <input type='checkbox' value='{{$friend->friend}}'>{{$friend->name}}
+                                <input type='checkbox' name='checklist' value='{{$friend->friend}}'>{{$friend->name}}
                                 <br>
                               @endforeach
                     @endif
