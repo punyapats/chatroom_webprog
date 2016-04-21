@@ -11,8 +11,12 @@
                     <div class="chat">
                         You are logged in!
                     </div>
-                    {{ Form::text('message') }}
-                    {{ Form::submit('Send', ['class' => 'btn btn-large btn-primary send']) }}
+
+                    <form action="/send" method="post" class="chatform">
+                        {{ Form::text('message') }}
+                        {{ Form::submit('Send', ['class' => 'btn btn-large btn-primary send']) }}
+                    </form>
+                    
                 </div>
             </div>
         </div>
@@ -39,16 +43,22 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Add Friend</h4>
               </div>
-              <div class="modal-body">
-                <div class="form-group">
-                  <label for="usr">Username:</label>
-                  <input type="text" class="form-control" id="usr">
+
+              <form action="add" method="post">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="usr">Username:</label>
+                    <input type="text" class="form-control" id="usr">
+                  </div>
                 </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" id="add">Add</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
+
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-default" id="add">Add</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </form>
+
+
             </div>
 
           </div>
