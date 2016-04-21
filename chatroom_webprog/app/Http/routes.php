@@ -37,5 +37,6 @@ Route::get('/', 'HomeController@index');
 Route::get('add', 'HomeController@addfriend');
 
 Route::post('/chat/{fchatkey}/send', ['as' => 'send', 'uses' => 'HomeController@send']); 
+Route::get('/chat/add','HomeController@addfriend');
 
 Route::get('/chat/{fchatkey}', 'HomeController@getchat');
