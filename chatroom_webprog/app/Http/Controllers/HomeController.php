@@ -33,6 +33,10 @@ class HomeController extends Controller
         $fname=['friend'=>''];
         $chat=['text'=>'','date'=>''];
         $chat = json_encode($chat,128);
+        $fname=DB::table('flist')->where('user',$id)->where('fchatkey','')->first();
+        $chat=DB::table('fchat')->where('fchatkey','')->get();
+        // $fname = json_encode($fname,128);
+        // $chat = json_encode($chat,128);
 
 
         // return view('home',compact('friendlist'));
