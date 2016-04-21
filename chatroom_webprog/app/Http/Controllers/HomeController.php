@@ -32,6 +32,9 @@ class HomeController extends Controller
 
         $fname=['friend'=>''];
         $chat=['text'=>'','date'=>''];
+        $fname = json_encode($fname,128);
+        $chat = json_encode($chat,128);
+
 
         // return view('home',compact('friendlist'));
 
