@@ -1,5 +1,8 @@
 @extends('layouts.bothhome')
 
+
+
+
 @section('name')
   Group -
   @if(isset($gname))
@@ -16,5 +19,11 @@
       {{ Form::text('message', null,['id'=>'textin']) }}
       {{ Form::submit('Send', ['class' => 'btn btn-default send' , 'id' => 'sendbut']) }}
     {{ Form::close() }}
+    <input type="hidden" value="{{ $gchatkey }}" id="gkey">
+@endsection
 
+
+@section('script')
+
+<script src='../js/gchat.js'></script>
 @endsection

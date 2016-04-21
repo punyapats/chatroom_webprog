@@ -17,3 +17,11 @@
   {{ Form::close() }}
   <input type="hidden" value="{{ $fchatkey }}" id="fkey">
 @endsection
+
+
+@section('script')
+
+<script src='../js/chat.js'></script>
+
+
+@endsection

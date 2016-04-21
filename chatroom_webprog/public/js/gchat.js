@@ -18,31 +18,13 @@ $(document).ready(function()
     });
 
     // var key = '{{ $fchatkey }}';
-    var key = $('#fkey').val();
-    setInterval(function(){
-        $.ajax({
-            type: "GET",
-            url: "/update",
-            data: {
-                fchatkey : key
-            },
-            success:function(res)
-            {
-                // alert(res[0]['text']);
-                $("div.chat").empty();
-                $.each(res,function(index,value){
-                    $("div.chat").append('<p>'+value['date']+" - "+value['text']+'</p>');
-                });
-                location.reload();
-            }
-        });
-    },5000);
+    var key = $('#gkey').val();
       setInterval(function(){
           $.ajax({
               type: "GET",
-              url: "/update",
+              url: "/gupdate",
               data: {
-                  fchatkey : key
+                  gchatkey : key
               },
               success:function(res)
               {
