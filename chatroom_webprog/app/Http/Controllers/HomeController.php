@@ -139,7 +139,7 @@ class HomeController extends Controller
     {
         $name = Auth::user()->name;
         DB::table('fchat')->insert(
-            ['text'=> $name.'-'.Input::get('message'),'fchatkey'=> $fchatkey]
+            ['text'=> $name.' - '.Input::get('message'),'fchatkey'=> $fchatkey]
         );  
 
         $chat = DB::table('fchat')->where('fchatkey', $fchatkey)->get();
@@ -176,7 +176,7 @@ class HomeController extends Controller
 
         $name = Auth::user()->name;
         DB::table('gchat')->insert(
-            ['text'=> $name.'-'.Input::get('message'),'gchatkey'=> $gchatkey]
+            ['text'=> $name.' - '.Input::get('message'),'gchatkey'=> $gchatkey]
         );  
 
         $chat = DB::table('gchat')->where('gchatkey', $gchatkey)->get();
