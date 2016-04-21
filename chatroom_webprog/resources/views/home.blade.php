@@ -45,13 +45,15 @@
                 <div class="panel-heading">Friend List</div>
                     <div class="panel-body">
                        <button type="button" class="col-md-offset-8 btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Add Friend</button>
-                        <div class="lfriend">
+                        <div class="lfriend" id="friend">
+                          <ul>
                             @if(isset($friendlist))
                               @foreach ($friendlist as $friend)
-                                <a href="/chat/{{ $friend->fchatkey }}">{{ $friend->name }}</a>
+                                <li><a href="/chat/{{ $friend->fchatkey }}">{{ $friend->name }}</a></li>
                               
                               @endforeach
                             @endif
+                          </ul>  
                         </div>
 
                     </div>
