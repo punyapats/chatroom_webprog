@@ -2,11 +2,9 @@
 
 @section('name')
   Group -
-  @if(isset($fname))
-  @if(is_array($fname) || is_object($fname))
-    @foreach($fname as $names)
-      {{ $names->name }}
-    @endforeach
+  @if(isset($gname))
+  @if(is_array($gname) || is_object($gname))
+      {{ $gname->groupname }}
   @endif
   @endif
 

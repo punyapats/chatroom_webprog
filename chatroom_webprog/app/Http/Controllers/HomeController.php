@@ -87,8 +87,9 @@ class HomeController extends Controller
             $fname = DB::table('users')->where('id',$fchat[0]->friend)->get();
         }
 
+        $grouplist = DB::table('glist')->where('user',$id)->get();
 
-        return view('home',compact('friendlist','chat','fname','fchatkey'));
+        return view('home',compact('friendlist','chat','fname','fchatkey','grouplist'));
         // return view('home',compact('friendlist'),compact('chat'),compact('fname'));
         // return $chat;
     }
@@ -101,10 +102,12 @@ class HomeController extends Controller
 
         $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name','flist.fchatkey','flist.friend')->get();
 
-        $gname = DB::table('gchat')->where('gchatkey',$gchatkey)->select('groupname')->first();
+        $gname = DB::table('glist')->where('gchatkey',$gchatkey)->select('groupname')->first();
 
+        $grouplist = DB::table('glist')->where('user',$id)->get();
 
-        return view('ghome',compact('friendlist','chat','gchatkey','gname'));
+        // return $gname;
+        return view('ghome',compact('friendlist','chat','gchatkey','gname','grouplist'));
         
     }
 
@@ -129,7 +132,7 @@ class HomeController extends Controller
 
         }
 
-        // return $checklist;
+         // return $checklist;
     }
 
     public function send($fchatkey)
