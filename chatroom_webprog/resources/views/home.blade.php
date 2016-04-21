@@ -28,8 +28,8 @@
                         <button type="button" class="col-md-offset-2 btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Add Friend</button>
                         <div class="lfriend">
                             @foreach ($friendlist as $friend)
-                              {{ friend->friend }}
-                              {{ friend->fchatkey }}
+                              {{ $friend->friend }}
+                              {{ $friend->fchatkey }}
                             @endforeach
                         </div>
                     </div>
