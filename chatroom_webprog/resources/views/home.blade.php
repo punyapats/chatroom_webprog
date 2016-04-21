@@ -51,7 +51,7 @@
                             @endif
                           </ul>  
                         </div>
-
+                        <button type="button" class="col-md-offset-8 btn btn-info btn-md" data-toggle="modal" data-target="#createModal">Create Group</button>
                     </div>
             </div>
         </div>
@@ -59,7 +59,7 @@
 
 
 
-        <!-- Modal -->
+        <!-- Add Friend Modal -->
         <div id="myModal" class="modal fade" role="dialog">
           <div class="modal-dialog">
 
@@ -83,8 +83,40 @@
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
               </form>
+            </div>
 
+          </div>
+        </div>
+        <!-- Create Group Modal -->
+        <div id="createModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
 
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create Group</h4>
+              </div>
+
+              <form action="add" method="post">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="gname">Groupname</label>
+                    <input type="text" class="form-control" id="gname">
+                    @if(isset($friendlist))
+                              @foreach ($friendlist as $friend)
+                                <input type='checkbox' value='{{$friend->friend}}'>{{$friend->name}}
+                                <br>
+                              @endforeach
+                    @endif
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" id="createg">Create</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </form>
             </div>
 
           </div>
