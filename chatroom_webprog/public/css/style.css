@@ -27,7 +27,7 @@
 
 input[name="message"]{
 	height: 30px;
-	width: 90%;
+	width: 87%;
 	float:left;
 }
 .btn.btn-large.btn-primary.send{
@@ -38,6 +38,7 @@ input[name="message"]{
 .send{
 	float: right;
 	margin-top: -4px;
+	width: 80px;
 }
 
 .chatform{
@@ -47,7 +48,8 @@ input[name="message"]{
 
 .addbut{
 	float: right;
-	margin-top: -20px;
+	margin-top: -27px;
+	width: 110px;
 }
 
 
