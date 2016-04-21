@@ -30,8 +30,11 @@ class HomeController extends Controller
         // $friendlist = DB::table('flist')->where('user',$id)->get();
         $friendlist = DB::table('flist')->where('user',$id)->join('users','flist.friend','=','users.id')->select('users.name')->get();
 
+        $fname=[];
+        $chat=[];
+
         // return view('home',compact('friendlist'));
-        return view('home',compact('friendlist'));
+        return view('home',compact('friendlist'),compact('chat'),compact('fname'));
     }
 
 
