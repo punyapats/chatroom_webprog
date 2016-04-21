@@ -11,8 +11,10 @@ $(document).ready(function()
             },
             success: function(){
                 alert("Add friend Success");
+                location.reload();
             }
             ,datatype : 'json'
         });
+
     })
 });

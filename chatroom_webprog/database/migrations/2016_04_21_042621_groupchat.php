@@ -13,6 +13,8 @@ class Groupchat extends Migration
     public function up()
     {
         Schema::create('gchat', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('gchatkey');
             $table->string('groupname');
             $table->string('text');
             $table->timestamp('date');

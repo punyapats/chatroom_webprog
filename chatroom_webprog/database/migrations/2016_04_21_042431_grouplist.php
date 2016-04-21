@@ -13,6 +13,7 @@ class Grouplist extends Migration
     public function up()
     {
         Schema::create('glist', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('groupname');
             $table->string('user');
         });

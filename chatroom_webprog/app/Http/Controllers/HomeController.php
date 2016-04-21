@@ -53,28 +53,23 @@ class HomeController extends Controller
             return back();
         }
     
-        if(intval($userid)<intval($fid)){
+        if($userid<$fid){
             $temp = $userid.'@'.$fid;
             DB::table('flist')->insert(
                 array('user' => $userid, 'friend' => $fid, 'fchatkey' => $temp)
             );
             DB::table('flist')->insert(
                 array('user' => $fid, 'friend' => $userid, 'fchatkey' => $temp)
-            );
-
-                
+            );                
         }else {
-            if(intval($userid)<intval($fid)){
             $temp = $fid.'@'.$userid;
             DB::table('flist')->insert(
                 array('user' => $fid, 'friend' => $userid, 'fchatkey' => $temp)
                 );
-            }
             DB::table('flist')->insert(
                 array('user' => $userid, 'friend' => $fid, 'fchatkey' => $temp)
                 );
-
-         }
+        }
         return back();
     }
 
@@ -88,7 +83,7 @@ class HomeController extends Controller
 
         $fchat = DB::table('flist')->where('user',$id)->where('fchatkey',$fchatkey)->select('friend')->get();
 
-        //$fname = DB::table('users')->where('id',$fchat[0]->friend)->get();
+        $fname = DB::table('users')->where('id',$fchat[0]->friend)->get();
 
         return view('home',compact('friendlist','chat','fname','fchatkey'));
         // return view('home',compact('friendlist'),compact('chat'),compact('fname'));
