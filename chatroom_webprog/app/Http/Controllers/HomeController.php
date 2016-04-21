@@ -144,7 +144,6 @@ class HomeController extends Controller
         return back();
     }
 
-<<<<<<< HEAD
 
      public function updatechat()
     {
@@ -152,7 +151,9 @@ class HomeController extends Controller
         $chat = DB::table('fchat')->where('fchatkey',$fchatkey)->get();
 
         return $chat;
-=======
+    }
+
+
     public function gsend($gchatkey){
 
         DB::table('gchat')->insert(
@@ -164,6 +165,5 @@ class HomeController extends Controller
         // return view('home',compact('chat','fchatkey'));
         return back();
 
->>>>>>> origin/master
     }
 }
